@@ -1,4 +1,6 @@
-package Purchasable;
+package Purchasable.AddOns;
+
+import Purchasable.PurchasableObject;
 
 public abstract class eventExtras implements PurchasableObject{
     
@@ -16,12 +18,6 @@ public abstract class eventExtras implements PurchasableObject{
     @Override 
     public double getPrice() {
         return pObject.getPrice();
-    }
-
-    @Override
-    public boolean purchased() {
-        //Check with Jess about this section
-        return pObject.purchased();
     }
 
     @Override 

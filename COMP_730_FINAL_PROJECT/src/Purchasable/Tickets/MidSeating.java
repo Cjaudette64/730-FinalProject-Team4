@@ -1,4 +1,6 @@
-package Purchasable;
+package Purchasable.Tickets;
+
+import Purchasable.PurchasableObject;
 
 public class MidSeating implements PurchasableObject {
     
@@ -12,12 +14,6 @@ public class MidSeating implements PurchasableObject {
     @Override 
     public double getPrice() {
         return 125.00;
-    }
-
-    @Override
-    public boolean purchased() {
-        //Check with Jess about this section
-        return true;
     }
 
     @Override 

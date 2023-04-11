@@ -1,5 +1,7 @@
 package Purchasable;
 
+import Purchasable.AddOns.eventExtras;
+
 public class EventMerch extends eventExtras{
 
     public EventMerch(PurchasableObject pObject) {
@@ -15,13 +17,7 @@ public class EventMerch extends eventExtras{
     public double getPrice() {
         return super.getPrice() + 50.00;
     }
-
-    @Override
-    public boolean purchased() {
-        //Check with Jess about this section
-        return true;
-    }
-
+    
     @Override 
     public String getEvent() {
         //Check with Jess about this section

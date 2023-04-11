@@ -1,4 +1,6 @@
-package Purchasable;
+package Purchasable.Tickets;
+
+import Purchasable.PurchasableObject;
 
 public class FrontRowSeating implements PurchasableObject {
     
@@ -13,13 +15,7 @@ public class FrontRowSeating implements PurchasableObject {
     public double getPrice() {
         return 200.00;
     }
-
-    @Override
-    public boolean purchased() {
-        //Check with Jess about this section
-        return true;
-    }
-
+    
     @Override 
     public String getEvent() {
         //Check with Jess about this section
