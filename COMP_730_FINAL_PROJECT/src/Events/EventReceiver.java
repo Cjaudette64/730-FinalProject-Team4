@@ -4,12 +4,10 @@ import java.util.ArrayList;
 
 class EventReceiver {
 
-    private EventBuilder newEvent;
-
     //in a visual interface this would be done with a form,
     //not sure theres really a better way to do it via CLI
     //feel free to edit this if you can think of one though
-	public void makeEvent()
+	public EventBuilder makeEvent()
 	{
         Scanner sc = new Scanner(System.in);
         String[] prompts = {"name", "datetime", "address", "venue",
@@ -34,12 +32,10 @@ class EventReceiver {
         if (!responses.get(6).isEmpty()) { builder = builder.setTicketLimit(Integer.parseInt(responses.get(6))); }
     
         EventBuilder event = builder.build();
-
-        System.out.println(event);
-        
         
         sc.close();
-        //EventBuilder newEvent = new EventBuilder.Builder().build();
+
+        return event;
 
     }
     

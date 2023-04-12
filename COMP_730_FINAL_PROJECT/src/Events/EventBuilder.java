@@ -4,7 +4,7 @@ public class EventBuilder {
 
 	//private final int id; //maybe should be linked to db PK
 	private String name;
-    private String datetime;
+    private String datetime; //probably needs to be standardized for DB
 	private String address;
     private String venue;
     private String category;
