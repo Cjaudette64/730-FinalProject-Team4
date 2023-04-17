@@ -22,7 +22,6 @@ public abstract class eventExtras implements PurchasableObject{
 
     @Override 
     public String getEvent() {
-        //Check with Jess about this section
         return pObject.getEvent();
     }
 

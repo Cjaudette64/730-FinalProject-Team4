@@ -13,7 +13,6 @@ public class FrontInterface implements Interface {
         String password = sc.nextLine();
         System.out.println("Flag (1=User, 2=Org, 3=Admin): ");
         int flag = sc.nextInt();
-        sc.close();
         
         Login(username, password, flag);
     }

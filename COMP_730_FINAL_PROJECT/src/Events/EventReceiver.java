@@ -2,12 +2,13 @@ package Events;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-class EventReceiver {
+public class EventReceiver {
 
     //in a visual interface this would be done with a form,
     //not sure theres really a better way to do it via CLI
     //feel free to edit this if you can think of one though
-	public EventBuilder makeEvent()
+
+    public EventBuilder makeEvent()
 	{
         Scanner sc = new Scanner(System.in);
         String[] prompts = {"name", "datetime", "address", "venue",
@@ -32,16 +33,9 @@ class EventReceiver {
         if (!responses.get(6).isEmpty()) { builder = builder.setTicketLimit(Integer.parseInt(responses.get(6))); }
     
         EventBuilder event = builder.build();
-        
-        sc.close();
 
         return event;
 
     }
-    
-    public static void main(String[] args) {
-		EventReceiver test = new EventReceiver();
-        test.makeEvent();
-	}
-	
+
 }
