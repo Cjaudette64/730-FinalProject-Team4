@@ -3,12 +3,12 @@ package Database;
 import java.sql.*;
 
 public class DatabaseAccess {
-	private final Connection connection;
-	private final Statement statement;
-	private final PreparedStatement prepStatement;
-	private final ResultSet resSet;
+	private final String connection;
+	private final String statement;
+	private final String prepStatement;
+	private final String resSet;
 	
-	public DatabaseAccess(Connection connection, Statement statement, PreparedStatement prepStatement, ResultSet resSet) {
+	public DatabaseAccess(String connection, String statement, String prepStatement, String resSet) {
 		//
 		this.connection = connection;
 		this.statement = statement;
@@ -21,27 +21,24 @@ public class DatabaseAccess {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			
-			/*	
-			 	May have to adjust the Builder class and/or remove it entirely depending on how passing these SQL import keywords through works
-			 	connection -> setup through the DatabaseAccessBuilder class
-				statement -> setup through the DatabaseAccessBuilder class ( statement = connect.createStatement() )
-				. . .
-			*/
+
+			if (connection == null)
+			{
+				return; //no connection means we can't connection to the database
+			}
+
+			Connection dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/feedback?"+connection);
+
+			Statement dbStatement = dbConnection.createStatement();
+
+			PreparedStatement dbPreparedStatement = dbConnection.prepareStatement(prepStatement); 
+			//write a simple select query to test above, and create a write function to output to console
+
+			//close all of the statement(s) and the connection(s) here instead, since we changed to having string instead of the sql data-types which probably wouldn't work
 		}
 		catch (Exception e) {
 			throw e;
-		} finally {
-			close(); //close the connection to the database once done with query
-		}
+		} 
 	} //end runQuery
-	
-	public void close() {
-		try {
-			//implement closing of the resSet, statement(s), and connection 
-			//check if they're null first before trying to close them
-		} catch (Exception e) {
-			throw e;
-		}
-	} //end close
 	
 } //end DatabaseAccess

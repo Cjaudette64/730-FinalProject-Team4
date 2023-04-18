@@ -3,31 +3,27 @@ package Database;
 import java.sql.*;
 
 public class DatabaseAccessBuilder {
-	private Connection connection = null;
-	private Statement statement = null;
-	private PreparedStatement prepStatement = null;
-	private ResultSet resSet = null;
+	private String connection = null;
+	private String statement = null;
+	private String prepStatement = null;
+	private String resSet = null;
 	
 	public DatabaseAccessBuilder setConnection(String connection) {
-		try {
-			this.connection = DriverManager.getConnection(connection);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		this.connection = connection;
 		return this;
 	} //end setConnection
 	
-	public DatabaseAccessBuilder setStatement(Statement statement) {
+	public DatabaseAccessBuilder setStatement(String statement) {
 		this.statement = statement;
 		return this;
 	} //end setStatement
 	
-	public DatabaseAccessBuilder setPreparedStatement(PreparedStatement prepStatement) {
+	public DatabaseAccessBuilder setPreparedStatement(String prepStatement) {
 		this.prepStatement = prepStatement;
 		return this;
 	} //end setPreparedStatement
 	
-	public DatabaseAccessBuilder setResultSet(ResultSet resSet) {
+	public DatabaseAccessBuilder setResultSet(String resSet) {
 		this.resSet = resSet;
 		return this;
 	} //end setResultSet
