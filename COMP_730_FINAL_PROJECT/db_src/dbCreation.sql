@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS TicketEvents (
     PRIMARY KEY (EventID)
 );
 
-CREATE TABLE IF NOT EXISISTS Users (
+CREATE TABLE IF NOT EXISTS Users (
     UserID int NOT NULL AUTO_INCREMENT,
     Username varchar(20),
     UserPass varchar(50),
