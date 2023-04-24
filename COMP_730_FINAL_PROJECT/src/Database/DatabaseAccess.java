@@ -12,6 +12,52 @@ public class DatabaseAccess {
         this.prepStatement = prepStatement;
     }
 
+    public boolean runLoginQuery(String username, String password) throws Exception {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+
+            if (connection == null || prepStatement == null) {
+                return false; // all are needed to write to the db efficiently and securely
+            }
+
+            Connection dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/final_project730?" + connection); // rename final_project730 to your db name
+
+            Statement dbStatement = dbConnection.createStatement();
+
+            //PreparedStatement dbPreparedStatement = dbConnection.prepareStatement(prepStatement);
+
+            Scanner scanner = new Scanner(System.in);
+        
+            ResultSet resSet = dbStatement.executeQuery("SELECT Username, UserPass FROM Users where Username='" +username+"'");
+            //if(password.equals(resSet.getString("UserPass"))) {
+            //    System.out.println("Login Successful");
+            //}
+
+            while (resSet.next()) {
+                //int resUserID = resSet.getInt("UserID");
+                String resUsername = resSet.getString("Username");
+                String resPassword = resSet.getString("UserPass");
+                System.out.println("I get here 1");
+                if(password.equals(resPassword)) {
+                        System.out.println("Login Successful");
+                        return true;
+                    }
+                else {
+                    System.out.println("Incorrect Login Try Again:");
+                }
+                System.out.println("I get here");
+                System.out.println(resUsername + ", " + resPassword);
+            }
+
+        }
+        catch (Exception e) {
+            throw e;
+        }
+
+        return false;
+
+    }
+
     public void runInsertQuery() throws Exception {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();

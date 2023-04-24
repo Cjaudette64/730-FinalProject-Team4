@@ -1,5 +1,5 @@
 package Interface;
 
 public interface Interface {
-    public void StartScreen();
+    public void StartScreen() throws Exception;
 }
