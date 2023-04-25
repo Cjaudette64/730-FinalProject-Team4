@@ -1,7 +1,8 @@
 package Interface;
 import java.util.Scanner;
-import Purchaser.*;
 import Database.*;
+import Purchasable.*;
+
 
 public class UserInterface implements Interface {
     @Override
