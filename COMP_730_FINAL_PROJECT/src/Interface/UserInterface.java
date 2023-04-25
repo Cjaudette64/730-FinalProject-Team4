@@ -1,6 +1,7 @@
 package Interface;
 import java.util.Scanner;
 import Purchaser.*;
+import Database.*;
 
 public class UserInterface implements Interface {
     @Override
@@ -20,16 +21,50 @@ public class UserInterface implements Interface {
 
     public void OptionHandler(int option, String username) throws Exception
     {
+        DatabaseAccess dbConnection;
+        Scanner sc = new Scanner(System.in);
         switch(option) {
             case(1):
                 //send user to view list of events to choose via
                 //database queries then come back to pass event
                 //to Purchaser
-                System.out.println("Requires database integration");
+                dbConnection = new DatabaseAccessBuilder()
+                .setConnection("user=root&password=X")//rename root and password to your username and password for the database login, NOT USER TABLE (SET AS CAMERONS INFO)
+                .build();
+
+                System.out.println("\nEventID: \t Event Name: \t Event Capacity:");
+                dbConnection.UserInterfaceEventViewer();
+
+
+
+                //NOW WE NEED TO ALLOW THE USER TO INPUT TO SELECT AN EVENT TO PURCHASE THE TICKET AFTER THE SCREEN HAS DISPLAYED ABOVE
+                //CAM'S CODE WILL GET IMPLEMENTED HERE
+
+
+                System.out.println("\n\n\n");
                 StartScreen(username);
                 break;
             case(2):
-                System.out.println("Requires database integration");
+                dbConnection = new DatabaseAccessBuilder()
+                .setConnection("user=root&password=X")//rename root and password to your username and password for the database login, NOT USER TABLE(SET AS CAMERONS INFO)
+                .setPreparedStatement("SELECT TicketEvents.EventName, Tickets.Username, Tickets.TicketName, Tickets.TicketPrice, Tickets.AddOns, Tickets.AddOnsCost FROM Tickets INNER JOIN TicketEvents ON Tickets.EventID = TicketEvents.EventID WHERE Tickets.Username = '" + username + "'")
+                .build();
+
+                System.out.println("\nEvent Name: | Username: | Ticket Name: | Ticket Price: | Add Ons: | Add Ons Cost: ");
+                dbConnection.UserInterfaceTicketViewer();
+
+                System.out.println("\n\n\n");
+                StartScreen(username);
+                break;
+            case(3):
+                System.out.println("Enter a ticket ID to refund...");
+                int ticketIDSel = sc.nextInt();
+                dbConnection = new DatabaseAccessBuilder()
+                .setConnection("user=root&password=X")//rename root and password to your username and password for the database login, NOT USER TABLE(SET AS CAMERONS INFO)
+                .setPreparedStatement("DELETE FROM Tickets WHERE TicketID ='" + ticketIDSel + "'")
+                .build();
+
+                System.out.println("\n\n\n");
                 StartScreen(username);
                 break;
             case(4):
