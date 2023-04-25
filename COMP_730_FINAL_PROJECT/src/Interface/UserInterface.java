@@ -1,6 +1,6 @@
 package Interface;
 import java.util.Scanner;
-import Purchaser.*;
+import Purchasable.*;
 
 public class UserInterface implements Interface {
     @Override
