@@ -4,7 +4,7 @@ import Events.*;
 
 public class EventOrganizerInterface implements Interface{
     @Override
-    public void StartScreen() throws Exception{
+    public void StartScreen(String username) throws Exception{
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome Event Org");
         System.out.println("Choose an Option Below to Get Started:");
@@ -14,11 +14,11 @@ public class EventOrganizerInterface implements Interface{
         System.out.println("4: Logout");
         int option = sc.nextInt();
 
-        OptionHandler(option);
+        OptionHandler(option, username);
         
     }
 
-    public void OptionHandler(int option) throws Exception
+    public void OptionHandler(int option, String username) throws Exception
     {
         switch(option) {
             case(1):
@@ -29,14 +29,14 @@ public class EventOrganizerInterface implements Interface{
                 break;
             case(2):
                 System.out.println("Requires database integration");
-                StartScreen();
+                StartScreen(username);
                 break;
             case(3):
                 System.out.println("Requires database integration");
             case(4):
                 FrontInterface logout = new FrontInterface();
                 System.out.println("You have successfully logged out");
-                logout.StartScreen();
+                logout.StartScreen(username);
                 break;
         }
     }

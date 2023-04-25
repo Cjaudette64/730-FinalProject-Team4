@@ -4,7 +4,12 @@ import Purchasable.PurchasableObject;
 
 public class BoxSeating implements PurchasableObject {
     
-    public BoxSeating() { }
+    private int eventid;
+
+    public BoxSeating(int EventID) { 
+        eventid= EventID;
+
+    }
 
     @Override
     public String getName() {
@@ -17,8 +22,8 @@ public class BoxSeating implements PurchasableObject {
     }
 
     @Override 
-    public String getEvent() {
+    public int getEvent() {
         //Check with Jess about this section
-        return "FILL IN";
+        return eventid;
     }
 }

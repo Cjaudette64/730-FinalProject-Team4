@@ -1,5 +1,5 @@
 package Interface;
 
 public interface Interface {
-    public void StartScreen() throws Exception;
+    public void StartScreen(String username) throws Exception;
 }

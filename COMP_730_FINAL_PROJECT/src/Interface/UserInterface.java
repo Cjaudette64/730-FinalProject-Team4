@@ -4,7 +4,7 @@ import Purchaser.*;
 
 public class UserInterface implements Interface {
     @Override
-    public void StartScreen() throws Exception{
+    public void StartScreen(String username) throws Exception{
         Scanner sc = new Scanner(System.in);
         
         System.out.println("Welcome User");
@@ -14,11 +14,11 @@ public class UserInterface implements Interface {
         System.out.println("3. Refund tickets");
         System.out.println("4: Logout");
         int option = sc.nextInt();
-        OptionHandler(option); 
+        OptionHandler(option, username); 
         
     }
 
-    public void OptionHandler(int option) throws Exception
+    public void OptionHandler(int option, String username) throws Exception
     {
         switch(option) {
             case(1):
@@ -26,20 +26,16 @@ public class UserInterface implements Interface {
                 //database queries then come back to pass event
                 //to Purchaser
                 System.out.println("Requires database integration");
-                StartScreen();
+                StartScreen(username);
                 break;
             case(2):
                 System.out.println("Requires database integration");
-                StartScreen();
-                break;
-            case(3):
-                System.out.println("Requires database integration");
-                StartScreen();
+                StartScreen(username);
                 break;
             case(4):
                 FrontInterface logout = new FrontInterface();
                 System.out.println("You have successfully logged out");
-                logout.StartScreen();
+                logout.StartScreen(username);
                 break;
         }
     }
