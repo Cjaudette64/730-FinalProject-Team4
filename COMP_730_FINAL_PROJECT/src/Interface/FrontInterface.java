@@ -7,7 +7,7 @@ import Database.DatabaseLogin;
 
 public class FrontInterface implements Interface {
 
-    public void StartScreen () throws Exception {
+    public void StartScreen (String user) throws Exception {
         Scanner sc = new Scanner(System.in);
        
         System.out.println("Welcome to Ticketura. Login to get started");
@@ -15,7 +15,7 @@ public class FrontInterface implements Interface {
         String username = sc.nextLine();
         System.out.println("Password: ");
         String password = sc.nextLine();
-        System.out.println("Flag (1=User, 2=Org, 3=Admin): ");
+        System.out.println("Flag (1=User, 2=Org): ");
         int flag = sc.nextInt();
         boolean success = false;
         
@@ -42,22 +42,18 @@ public class FrontInterface implements Interface {
         switch(flag) {
             case(1):
                 UserInterface userint = new UserInterface();
-                userint.StartScreen();
+                userint.StartScreen(user);
                 break;
             case(2):
                 EventOrganizerInterface eventint = new EventOrganizerInterface();
-                eventint.StartScreen();
-                break;
-            case(3):
-                AdminInterface adminint = new AdminInterface();
-                adminint.StartScreen();
+                eventint.StartScreen(user);
                 break;
         }
     }  
     
     public static void main(String[] args) throws Exception{
         FrontInterface fint = new FrontInterface();
-        fint.StartScreen();
+        fint.StartScreen("");
     }
 }
 
