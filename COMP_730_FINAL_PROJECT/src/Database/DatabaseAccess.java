@@ -3,6 +3,8 @@ package Database;
 import java.sql.*;
 import java.util.Scanner;
 
+import javax.naming.spi.DirStateFactory.Result;
+
 public class DatabaseAccess {
     private final String connection;
     private final String prepStatement;
@@ -16,11 +18,11 @@ public class DatabaseAccess {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 
-            if (connection == null || prepStatement == null) {
+            if (connection == null) {
                 return false; // all are needed to write to the db efficiently and securely
             }
 
-            Connection dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/final_project730?" + connection); // rename final_project730 to your db name
+            Connection dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/final_project730?" + connection);
 
             Statement dbStatement = dbConnection.createStatement();
 
@@ -28,7 +30,7 @@ public class DatabaseAccess {
 
             Scanner scanner = new Scanner(System.in);
         
-            ResultSet resSet = dbStatement.executeQuery("SELECT Username, UserPass FROM Users where Username='" +username+"'");
+            ResultSet resSet = dbStatement.executeQuery("SELECT Username, UserPass FROM Users WHERE Username='" +username+"'");
             //if(password.equals(resSet.getString("UserPass"))) {
             //    System.out.println("Login Successful");
             //}
@@ -62,11 +64,11 @@ public class DatabaseAccess {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 
-            if (connection == null || prepStatement == null) {
-                return; // all are needed to write to the db efficiently and securely
+            if (connection == null) {
+                return;
             }
 
-            Connection dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/final_project730?" + connection); // rename final_project730 to your db name
+            Connection dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/final_project730?" + connection);
 
             Statement dbStatement = dbConnection.createStatement();
 
@@ -137,5 +139,89 @@ public class DatabaseAccess {
         } catch (Exception e) {
             throw e;
         }
-    }
-}
+    } //end runInsertQuery
+
+
+    public void UserInterfaceEventViewer() throws Exception
+    {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+
+            if (connection == null) {
+                return;
+            }
+
+            Connection dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/final_project730?" + connection);
+            Statement dbStatement = dbConnection.createStatement();
+            ResultSet resSet = dbStatement.executeQuery("SELECT * FROM TicketEvents");
+           
+            while (resSet.next()) {
+                int EventID = resSet.getInt("EventID");
+                String EventName = resSet.getString("EventName");
+                int EventCap = resSet.getInt("EventCapacity");
+                System.out.println(String.format("%d \t\t %s \t\t %d", EventID, EventName, EventCap));
+            }
+
+            dbStatement.close();
+            dbConnection.close();
+        } catch (Exception e)
+        {
+            throw e;
+        }
+    } //end UserInterfaceEventViewer
+
+    public void UserInterfaceTicketViewer() throws Exception
+    {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+
+            if (connection == null || prepStatement == null) {
+                return;
+            }
+
+            Connection dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/final_project730?" + connection);
+            Statement dbStatement = dbConnection.createStatement();
+
+            ResultSet resSet = dbStatement.executeQuery(prepStatement);
+           
+            while (resSet.next()) {
+                String eventName = resSet.getString("EventName");
+                String Username = resSet.getString("Username");
+                String TicketName = resSet.getString("TicketName");
+                double TicketPrice = resSet.getDouble("TicketPrice");
+                String AddOns = resSet.getString("AddOns");
+                double AddOnsCost = resSet.getDouble("AddOnsCost");
+                System.out.println(String.format("%s | %s | %s | %.2f | %s | %.2f", eventName, Username, TicketName, TicketPrice, AddOns, AddOnsCost));
+            }
+
+            dbStatement.close();
+            dbConnection.close();
+        } catch (Exception e)
+        {
+            throw e;
+        }
+    } //end UserInterfaceTicketViewer
+
+    public void UserInterfaceTicketRefund() throws Exception
+    {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+
+            if (connection == null || prepStatement == null) {
+                return;
+            }
+
+            Connection dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/final_project730?" + connection);
+            Statement dbStatement = dbConnection.createStatement();
+
+            ResultSet resSet = dbStatement.executeQuery(prepStatement);
+
+            System.out.println("Refunded ticket!");
+        } catch (Exception e)
+        {
+            throw e;
+        }
+    } //end UserInterfaceTicketRefund
+
+
+} //end DatabaseAccess
