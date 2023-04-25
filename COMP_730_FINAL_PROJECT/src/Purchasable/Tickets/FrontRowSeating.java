@@ -3,8 +3,11 @@ package Purchasable.Tickets;
 import Purchasable.PurchasableObject;
 
 public class FrontRowSeating implements PurchasableObject {
+    private int eventid;
     
-    public FrontRowSeating() { }
+    public FrontRowSeating(int EventID) { 
+        eventid = EventID;
+    }
 
     @Override
     public String getName() {
@@ -17,8 +20,8 @@ public class FrontRowSeating implements PurchasableObject {
     }
     
     @Override 
-    public String getEvent() {
+    public int getEvent() {
         //Check with Jess about this section
-        return "FILL IN";
+        return eventid;
     }
 }

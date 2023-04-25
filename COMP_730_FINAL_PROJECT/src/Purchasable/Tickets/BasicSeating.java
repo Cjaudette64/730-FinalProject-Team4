@@ -3,8 +3,12 @@ package Purchasable.Tickets;
 import Purchasable.PurchasableObject;
 
 public class BasicSeating implements PurchasableObject {
+
+    private int eventid;
     
-    public BasicSeating() { }
+    public BasicSeating(int EventID) { 
+        eventid = EventID;
+    }
 
     @Override
     public String getName() {
@@ -17,8 +21,8 @@ public class BasicSeating implements PurchasableObject {
     }
 
     @Override 
-    public String getEvent() {
+    public int getEvent() {
         //Check with Jess about this section
-        return "FILL IN";
+        return eventid;
     }
 }
