@@ -29,10 +29,10 @@ public class Purchaser {
         //not sure how this is going to work having split purchasables
         //into so many different classes
 
-        BasicSeating newTicket = new BasicSeating();
+        //BasicSeating newTicket = new BasicSeating();
         //insert obj into database using previously defined constructor variables
-        System.out.println("You have purchased " + newTicket.getName() + " for " 
-                            + "$" + String.valueOf(newTicket.getPrice()));
+        //System.out.println("You have purchased " + newTicket.getName() + " for " 
+        //                    + "$" + String.valueOf(newTicket.getPrice()));
 
     }
 }
