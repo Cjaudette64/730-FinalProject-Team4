@@ -92,15 +92,15 @@ public class Selections {
             boolean food = userInput.next().equalsIgnoreCase("y");
 
             if (parking == true) {
-                eventExtras = eventExtras + "Park,";
+                eventExtras = eventExtras.concat("Park,");
                 cost += 25.00;
             }
             if (merchandise == true) {
-                eventExtras = eventExtras + "Merch,";
+                eventExtras = eventExtras.concat("Merch,");
                 cost += 75.00;
             }
             if (food == true) {
-                eventExtras = eventExtras + "Food,";
+                eventExtras = eventExtras.concat("Food,");
                 cost += 40.00;
             }
             
