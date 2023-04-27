@@ -26,28 +26,25 @@ public class UserInterface implements Interface {
         Scanner sc = new Scanner(System.in);
         switch(option) {
             case(1):
-                //send user to view list of events to choose via
-                //database queries then come back to pass event
-                //to Purchaser
                 dbConnection = new DatabaseAccessBuilder()
-                .setConnection("user=root&password=X")//rename root and password to your username and password for the database login, NOT USER TABLE (SET AS CAMERONS INFO)
-                .build();
+                    .setConnection("user=root&password=WildcatGraduate") // rename root and password to your username and password for the database login, NOT USER TABLE (SET AS CAMERONS INFO)
+                    .build();
 
                 System.out.println("\nEventID: \t Event Name: \t Event Capacity:");
                 dbConnection.UserInterfaceEventViewer();
 
+                String connection = "user=root&password=WildcatGraduate"; // rename root and password to your username and password for the database login, NOT USER TABLE (SET AS CAMERONS INFO)
+                String prepStatement = "INSERT INTO Tickets (EventID, Username, TicketName, TicketPrice, AddOns, AddOnsCost) VALUES (?, ?, ?, ?, ?, ?)";
+            
+                Selections selections = new Selections(connection, prepStatement);
+                selections.ticketSelection();
 
-
-                //NOW WE NEED TO ALLOW THE USER TO INPUT TO SELECT AN EVENT TO PURCHASE THE TICKET AFTER THE SCREEN HAS DISPLAYED ABOVE
-                //CAM'S CODE WILL GET IMPLEMENTED HERE
-
-
-                System.out.println("\n\n\n");
+                System.out.println("\n\n");
                 StartScreen(username);
                 break;
             case(2):
                 dbConnection = new DatabaseAccessBuilder()
-                .setConnection("user=root&password=X")//rename root and password to your username and password for the database login, NOT USER TABLE(SET AS CAMERONS INFO)
+                .setConnection("user=root&password=WildcatGraduate")//rename root and password to your username and password for the database login, NOT USER TABLE(SET AS CAMERONS INFO)
                 .setPreparedStatement("SELECT TicketEvents.EventName, Tickets.Username, Tickets.TicketName, Tickets.TicketPrice, Tickets.AddOns, Tickets.AddOnsCost FROM Tickets INNER JOIN TicketEvents ON Tickets.EventID = TicketEvents.EventID WHERE Tickets.Username = '" + username + "'")
                 .build();
 
@@ -61,7 +58,7 @@ public class UserInterface implements Interface {
                 System.out.println("Enter a ticket ID to refund...");
                 int ticketIDSel = sc.nextInt();
                 dbConnection = new DatabaseAccessBuilder()
-                .setConnection("user=root&password=X")//rename root and password to your username and password for the database login, NOT USER TABLE(SET AS CAMERONS INFO)
+                .setConnection("user=root&password=WildcatGraduate")//rename root and password to your username and password for the database login, NOT USER TABLE(SET AS CAMERONS INFO)
                 .setPreparedStatement("DELETE FROM Tickets WHERE TicketID ='" + ticketIDSel + "'")
                 .build();
 

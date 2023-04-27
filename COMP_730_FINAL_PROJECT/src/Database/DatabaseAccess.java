@@ -39,7 +39,6 @@ public class DatabaseAccess {
                 //int resUserID = resSet.getInt("UserID");
                 String resUsername = resSet.getString("Username");
                 String resPassword = resSet.getString("UserPass");
-                System.out.println("I get here 1");
                 if(password.equals(resPassword)) {
                         System.out.println("Login Successful");
                         return true;

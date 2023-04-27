@@ -17,11 +17,13 @@ public class FrontInterface implements Interface {
         String password = sc.nextLine();
         System.out.println("Flag (1=User, 2=Org): ");
         int flag = sc.nextInt();
+        sc.nextLine();
         boolean success = false;
         
         DatabaseLogin dbl = new DatabaseLogin(username, password);
         try {
             success = dbl.tryLogin();
+            System.out.println("Login successful: " + success);
         }
         catch (Exception e) {
             throw e;
