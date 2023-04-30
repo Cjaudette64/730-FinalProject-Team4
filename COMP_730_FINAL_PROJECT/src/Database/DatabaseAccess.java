@@ -101,7 +101,7 @@ public class DatabaseAccess {
             Statement dbStatement = dbConnection.createStatement();
             dbStatement.executeUpdate(prepStatement);
            
-            System.out.println("Ticket purchase succesful!");
+            System.out.println("Ticket purchase successful!");
 
             dbStatement.close();
             dbConnection.close();
