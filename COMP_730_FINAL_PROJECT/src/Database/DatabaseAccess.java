@@ -39,7 +39,7 @@ public class DatabaseAccess {
                 //int resUserID = resSet.getInt("UserID");
                 String resUsername = resSet.getString("Username");
                 String resPassword = resSet.getString("UserPass");
-                System.out.println("I get here 1");
+                //System.out.println("I get here 1");
                 if(password.equals(resPassword)) {
                         System.out.println("Login Successful");
                         return true;
@@ -47,7 +47,7 @@ public class DatabaseAccess {
                 else {
                     System.out.println("Incorrect Login Try Again:");
                 }
-                System.out.println("I get here");
+                //System.out.println("I get here");
                 System.out.println(resUsername + ", " + resPassword);
             }
 
@@ -60,7 +60,7 @@ public class DatabaseAccess {
 
     }
 
-    public void runInsertQuery() throws Exception {
+    public void runInsertQuery() throws Exception {             //WE CAN PROBABLY DELETE THIS LATER
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 
@@ -170,6 +170,29 @@ public class DatabaseAccess {
         }
     } //end UserInterfaceEventViewer
 
+    public void UserInterfaceTicketInsert() throws Exception
+    {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+
+            if (connection == null) {
+                return;
+            }
+
+            Connection dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/final_project730?" + connection);
+            Statement dbStatement = dbConnection.createStatement();
+            dbStatement.executeUpdate(prepStatement);
+           
+            System.out.println("Ticket purchase succesful!");
+
+            dbStatement.close();
+            dbConnection.close();
+        } catch (Exception e)
+        {
+            throw e;
+        }
+    } //end UserInterfaceTicketInsert
+
     public void UserInterfaceTicketViewer() throws Exception
     {
         try {
@@ -212,9 +235,8 @@ public class DatabaseAccess {
             }
 
             Connection dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/final_project730?" + connection);
-            Statement dbStatement = dbConnection.createStatement();
-
-            ResultSet resSet = dbStatement.executeQuery(prepStatement);
+            PreparedStatement dbStatement = dbConnection.prepareStatement(prepStatement);
+            dbStatement.executeUpdate();
 
             System.out.println("Refunded ticket!");
         } catch (Exception e)
