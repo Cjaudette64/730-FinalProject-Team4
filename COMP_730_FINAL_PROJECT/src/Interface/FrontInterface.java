@@ -37,7 +37,6 @@ public class FrontInterface implements Interface {
         //database and then getting flag from flag collumn
 
         //connect to database
-        //
 
         switch(flag) {
             case(1):
