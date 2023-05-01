@@ -33,14 +33,14 @@ public class UserInterface implements Interface {
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
                 dbConnection = new DatabaseAccessBuilder()
-                .setConnection("user=root&password=UR_DB_LOGIN")//rename root and password to your username and password for the database login, NOT USER TABLE (SET AS CAMERONS INFO)
+                .setConnection("user=root&password=tY77nM-8o1gh")//rename root and password to your username and password for the database login, NOT USER TABLE (SET AS CAMERONS INFO)
                 .build();
 
                 NewTicket TicketPurchase = new NewTicket();
                 TicketPurchase.SetTicketAssocUsername(username);
 
                 System.out.println("\nEventID: \t Event Name: \t Event Capacity:");
-                dbConnection.UserInterfaceEventViewer();
+                dbConnection.InterfaceEventViewer();
 
 
                 System.out.println("\nEnter the Event ID: ");
@@ -112,7 +112,7 @@ public class UserInterface implements Interface {
                 System.out.flush();
                 
                 dbConnection = new DatabaseAccessBuilder()
-                .setConnection("user=root&password=UR_DB_LOGIN")//rename root and password to your username and password for the database login, NOT USER TABLE (SET AS CAMERONS INFO)
+                .setConnection("user=root&password=tY77nM-8o1gh")//rename root and password to your username and password for the database login, NOT USER TABLE (SET AS CAMERONS INFO)
                 .setPreparedStatement("INSERT INTO Tickets (EventID, Username, TicketName, TicketPrice, AddOns, AddOnsCost) VALUES (" + TicketPurchase.GetEventID() + ", '" + TicketPurchase.GetTicketAssocUsername() + "', " + TicketPurchase.GetTicketName() + ", " + TicketPurchase.GetTicketPrice() + ", '" + TicketPurchase.GetAddOns() + "', " + TicketPurchase.GetAddOnsCost() + ");")
                 .build();
 
@@ -125,7 +125,7 @@ public class UserInterface implements Interface {
                 System.out.print("\033[H\033[2J");      //SCREENCLEAR
                 System.out.flush();                         //SCREENCLEAR
                 dbConnection = new DatabaseAccessBuilder()
-                .setConnection("user=root&password=UR_DB_LOGIN")//rename root and password to your username and password for the database login, NOT USER TABLE(SET AS CAMERONS INFO)
+                .setConnection("user=root&password=tY77nM-8o1gh")//rename root and password to your username and password for the database login, NOT USER TABLE(SET AS CAMERONS INFO)
                 .setPreparedStatement("SELECT TicketEvents.EventName, Tickets.Username, Tickets.TicketName, Tickets.TicketPrice, Tickets.AddOns, Tickets.AddOnsCost FROM Tickets INNER JOIN TicketEvents ON Tickets.EventID = TicketEvents.EventID WHERE Tickets.Username = '" + username + "'")
                 .build();
 
@@ -141,7 +141,7 @@ public class UserInterface implements Interface {
                 System.out.println("\nEnter a ticket ID to refund...");
                 int ticketIDSel = sc.nextInt();
                 dbConnection = new DatabaseAccessBuilder()
-                .setConnection("user=root&password=UR_DB_LOGIN")//rename root and password to your username and password for the database login, NOT USER TABLE(SET AS CAMERONS INFO)
+                .setConnection("user=root&password=tY77nM-8o1gh")//rename root and password to your username and password for the database login, NOT USER TABLE(SET AS CAMERONS INFO)
                 .setPreparedStatement("DELETE FROM Tickets WHERE TicketID = " + ticketIDSel + ";")
                 .build();
 

@@ -60,7 +60,7 @@ public class DatabaseAccess {
     }
 
 
-    public void UserInterfaceEventViewer() throws Exception
+    public void InterfaceEventViewer() throws Exception
     {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -86,7 +86,7 @@ public class DatabaseAccess {
         {
             throw e;
         }
-    } //end UserInterfaceEventViewer
+    } //end InterfaceEventViewer
 
     public void UserInterfaceTicketInsert() throws Exception
     {
@@ -162,6 +162,52 @@ public class DatabaseAccess {
             throw e;
         }
     } //end UserInterfaceTicketRefund
+
+    public void EventInterfaceEventInsert() throws Exception
+    {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+
+            if (connection == null) {
+                return;
+            }
+
+            Connection dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/final_project730?" + connection);
+            Statement dbStatement = dbConnection.createStatement();
+            dbStatement.executeUpdate(prepStatement);
+           
+            System.out.println("Event creation successful!");
+
+            dbStatement.close();
+            dbConnection.close();
+        } catch (Exception e)
+        {
+            throw e;
+        }
+    } //end EventInterfaceEventInsert
+
+    public void EventInterfaceEventUpdate() throws Exception
+    {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+
+            if (connection == null) {
+                return;
+            }
+
+            Connection dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/final_project730?" + connection);
+            Statement dbStatement = dbConnection.createStatement();
+            dbStatement.executeUpdate(prepStatement);
+           
+            System.out.println("Event information update successful!");
+
+            dbStatement.close();
+            dbConnection.close();
+        } catch (Exception e)
+        {
+            throw e;
+        }
+    } //end EventInterfaceEventUpdate
 
 
 } //end DatabaseAccess

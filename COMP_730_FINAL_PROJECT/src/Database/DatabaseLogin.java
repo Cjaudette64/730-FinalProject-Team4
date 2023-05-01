@@ -14,7 +14,7 @@ public class DatabaseLogin {
 
     public boolean tryLogin() throws Exception{
         DatabaseAccess dbTest = new DatabaseAccessBuilder()
-        .setConnection("user=root&password=UR_DB_LOGIN")//rename root and password to your username and password for the database login, NOT USER TABLE (SET AS CAMERONS INFO)
+        .setConnection("user=root&password=tY77nM-8o1gh")//rename root and password to your username and password for the database login, NOT USER TABLE (SET AS CAMERONS INFO)
         .setPreparedStatement("")
         .build();
         try {
