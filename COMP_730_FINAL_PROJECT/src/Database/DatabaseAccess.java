@@ -46,8 +46,6 @@ public class DatabaseAccess {
                 else {
                     System.out.println("Incorrect Login Try Again:");
                 }
-                //System.out.println("I get here");
-                System.out.println(resUsername + ", " + resPassword);
             }
 
         }
@@ -97,6 +95,7 @@ public class DatabaseAccess {
                 return;
             }
 
+            System.out.println(connection);
             Connection dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/final_project730?" + connection);
             Statement dbStatement = dbConnection.createStatement();
             dbStatement.executeUpdate(prepStatement);
