@@ -1,4 +1,4 @@
-## EVENT TICKET SYSTEM
+## EVENT TICKET SYSTEM -- TEAM 4
 ### Group members: Jess, Cameron, Connor
 
 ***
