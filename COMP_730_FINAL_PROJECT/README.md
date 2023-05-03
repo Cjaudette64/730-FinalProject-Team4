@@ -82,7 +82,9 @@ To ensure you have at least 1 user, please run the following code in a separate 
     
 The last step before you can run our code is to change the following files and lines to have YOUR root password. These need to be changed or it will NOT be able to access your connection:
     
-> DatabaseLogin.java      LINE 17: "user=root&password=tY77nM-8o1gh" to "user=root&password=<!YOUR PASSWORD HERE!>"
+> DatabaseLogin.java      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LINE 17: "user=root&password=tY77nM-8o1gh" to "user=root&password=<!YOUR PASSWORD HERE!>"
 
-> UserInterface.java      LINE 36: "user=root&password=tY77nM-8o1gh" to "user=root&password=<!YOUR PASSWORD HERE!>"
+> UserInterface.java      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LINE 36: "user=root&password=tY77nM-8o1gh" to "user=root&password=<!YOUR PASSWORD HERE!>"
 
