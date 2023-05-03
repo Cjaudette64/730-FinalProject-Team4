@@ -1,4 +1,20 @@
-/*DROP DATABASE final_project730;*/
+/*      ---NOTE: THIS IS SOME DATABASE CODE YOU MAY WANT TO RUN BEFORE STARTING THE PROGRAM---
+USE final_project730;
+
+INSERT INTO TicketEvents (EventName, EventCapacity) VALUES("TestEvent2", 333);
+SELECT * FROM TicketEvents;
+
+INSERT INTO Users (Username, UserPass) VALUES("root", "YES");
+SELECT * FROM Users;
+
+INSERT INTO Tickets (EventID, Username, TicketName, TicketPrice, AddOns, AddOnsCost) VALUES(1, "root", "Box", 200.99, 'Food,Merch', 148.50);
+SELECT * FROM Tickets;
+
+SELECT TicketEvents.EventName, Tickets.Username, Tickets.TicketName, Tickets.TicketPrice, Tickets.AddOns, Tickets.AddOnsCost
+FROM Tickets
+INNER JOIN TicketEvents ON Tickets.EventID = TicketEvents.EventID
+WHERE Tickets.Username = "root";
+*/
 CREATE DATABASE IF NOT EXISTS final_project730;
 
 USE final_project730;
@@ -59,3 +75,4 @@ BEGIN
 END //
 
 DELIMITER ;
+
