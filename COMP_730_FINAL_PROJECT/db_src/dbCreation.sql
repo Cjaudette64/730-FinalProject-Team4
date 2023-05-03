@@ -1,4 +1,20 @@
-/*DROP DATABASE final_project730;*/
+/*      ---NOTE: THIS IS SOME DATABASE CODE YOU MAY WANT TO RUN BEFORE STARTING THE PROGRAM---
+USE final_project730;
+
+INSERT INTO TicketEvents (EventName, EventCapacity) VALUES("TestEvent2", 333);
+SELECT * FROM TicketEvents;
+
+INSERT INTO Users (Username, UserPass) VALUES("root", "YES");
+SELECT * FROM Users;
+
+INSERT INTO Tickets (EventID, Username, TicketName, TicketPrice, AddOns, AddOnsCost) VALUES(1, "root", "Box", 200.99, 'Food,Merch', 148.50);
+SELECT * FROM Tickets;
+
+SELECT TicketEvents.EventName, Tickets.Username, Tickets.TicketName, Tickets.TicketPrice, Tickets.AddOns, Tickets.AddOnsCost
+FROM Tickets
+INNER JOIN TicketEvents ON Tickets.EventID = TicketEvents.EventID
+WHERE Tickets.Username = "root";
+*/
 CREATE DATABASE IF NOT EXISTS final_project730;
 
 USE final_project730;
@@ -25,9 +41,8 @@ CREATE TABLE IF NOT EXISTS Tickets (
 	EventID int,
     Username varchar(30),
     TicketName ENUM("Basic", "Mid", "FrontRow", "Box"),
-    /*need to discuss how pricing works*/
     TicketPrice DECIMAL(7,2), 
-    AddOns SET("Food", "Park", "PostEvent", "PreEvent"), 
+    AddOns SET("Park", "Merch", "Food"), 
     AddOnsCost DECIMAL(7,2),
     PRIMARY KEY (TicketID),
     FOREIGN KEY (EventID) REFERENCES TicketEvents(EventID),
@@ -60,3 +75,4 @@ BEGIN
 END //
 
 DELIMITER ;
+

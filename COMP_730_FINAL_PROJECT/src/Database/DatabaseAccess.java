@@ -18,7 +18,7 @@ public class DatabaseAccess {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 
             if (connection == null) {
-                return false; // all are needed to write to the db efficiently and securely
+                return false;
             }
 
             Connection dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/final_project730?" + connection);
