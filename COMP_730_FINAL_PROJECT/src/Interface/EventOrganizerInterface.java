@@ -96,8 +96,8 @@ public class EventOrganizerInterface implements Interface{
                     StartScreen(username);
                     break;
                 }
-
-                if (modifiedEventName == "0" && modifiedEventCap != 0)
+                
+                if (modifiedEventName.equals("0") && modifiedEventCap != 0)
                 {
                     //change just event cap
                     dbConnection = new DatabaseAccessBuilder()
@@ -106,7 +106,7 @@ public class EventOrganizerInterface implements Interface{
                     .build();
 
                    // dbConnection.EventInterfaceEventUpdate();
-                } else if (modifiedEventName != "0" && modifiedEventCap == 0)
+                } else if (!(modifiedEventName.equals("0")) && modifiedEventCap == 0)
                 {
                     //change just event name
                     dbConnection = new DatabaseAccessBuilder()
@@ -115,7 +115,7 @@ public class EventOrganizerInterface implements Interface{
                     .build();
 
                     //dbConnection.EventInterfaceEventUpdate();
-                } else if (modifiedEventName != "0" && modifiedEventCap != 0)
+                } else if (!(modifiedEventName.equals("0")) && modifiedEventCap != 0)
                 {
                     //change both
                     dbConnection = new DatabaseAccessBuilder()

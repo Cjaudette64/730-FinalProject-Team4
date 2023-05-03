@@ -25,9 +25,8 @@ CREATE TABLE IF NOT EXISTS Tickets (
 	EventID int,
     Username varchar(30),
     TicketName ENUM("Basic", "Mid", "FrontRow", "Box"),
-    /*need to discuss how pricing works*/
     TicketPrice DECIMAL(7,2), 
-    AddOns SET("Food", "Park", "PostEvent", "PreEvent"), 
+    AddOns SET("Park", "Merch", "Food"), 
     AddOnsCost DECIMAL(7,2),
     PRIMARY KEY (TicketID),
     FOREIGN KEY (EventID) REFERENCES TicketEvents(EventID),
